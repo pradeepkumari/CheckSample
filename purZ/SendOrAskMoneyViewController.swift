@@ -9,14 +9,9 @@
 import UIKit
 import Contacts
 import ContactsUI
-
-class SendOrAskMoneyViewController: UIViewController, CNContactPickerDelegate, UITextFieldDelegate, UITextViewDelegate {
-    
-    @IBOutlet weak var badgebtn: UIButton!
-   // @IBOutlet weak var `switch`: UISwitch!
-   // @IBOutlet weak var sendmoneylbl: UILabel!
-    //@IBOutlet weak var askformoneylbl: UILabel!
-    @IBOutlet weak var contactnotxtField: UITextField!
+class SendOrAskMoneyViewController: UIViewController, CNContactPickerDelegate, UITextFieldDelegate, UITextViewDelegate,UITabBarControllerDelegate {
+      @IBOutlet weak var badgebtn: UIButton!
+     @IBOutlet weak var contactnotxtField: UITextField!
     @IBOutlet weak var amounttxtField: UITextField!
        @IBOutlet weak var balancelbl: UILabel!
     
@@ -26,6 +21,10 @@ class SendOrAskMoneyViewController: UIViewController, CNContactPickerDelegate, U
        @IBOutlet weak var cancelbtn: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    @IBOutlet weak var viewForSegment: UIView!
+    @IBOutlet weak var segmentlbl1: UILabel!
+    
+    @IBOutlet weak var segmentlbl2: UILabel!
     
     @IBOutlet weak var segmentController: UISegmentedControl!
     
@@ -37,26 +36,42 @@ class SendOrAskMoneyViewController: UIViewController, CNContactPickerDelegate, U
     var contact_number = ""
     var amount_value = ""
     var remarks_txt = ""
-   // remarksTxtField.delegate = self
-  //remarks_txt.delegate = self
     override func viewDidLoad() {
         super.viewDidLoad()
+         Appconstant.SideMenu = 0;
+        tabBarController?.delegate = self
        remarksTxtField.delegate = self
-        // Do any additional setup after loading the view, typically from a nib.
+        navigationController?.navigationBarHidden = true
+        segmentlbl1.frame.size.width = viewForSegment.frame.size.width/2.0 + 10
+        segmentlbl2.frame.size.width = segmentController.frame.size.width/2.0
+        segmentlbl1.layer.backgroundColor = UIColor.whiteColor().CGColor
+        segmentlbl2.layer.backgroundColor = UIColor(red: 250.0/255.0, green: 194.0/255.0, blue: 35.0/255.0, alpha: 1).CGColor
+        print("Segment Widths==>>")
+        print(segmentController.frame.size.width)
+        print(self.view.frame.size.width)
+        print(viewForSegment.frame.size.width)
+        print(segmentlbl1.frame.size.width)
+        print(segmentlbl2.frame.size.width)
+        
+let titleTextAttributes = [NSForegroundColorAttributeName: UIColor.blackColor()]
+              UISegmentedControl.appearance().setTitleTextAttributes(titleTextAttributes, forState: .Normal)
+        UISegmentedControl.appearance().setTitleTextAttributes(titleTextAttributes, forState: .Selected)
+
         scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: 400)
         remarksTxtField.layer.cornerRadius = 5
+        remarksTxtField.layer.borderColor = UIColor(red: 225.0/255.0, green: 228.0/255.0, blue: 229.0/255.0, alpha: 1).CGColor
+
         moneybtn.layer.cornerRadius = 20
         moneybtn.layer.borderWidth = 2.5;
         moneybtn.layer.borderColor = UIColor.greenColor().CGColor
         cancelbtn.layer.cornerRadius = 20
         cancelbtn.layer.borderWidth = 2.5;
         cancelbtn.layer.borderColor = UIColor.redColor().CGColor
-        (segmentController.subviews[1] as UIView).backgroundColor = UIColor.whiteColor()
-        (segmentController.subviews[1] as UIView).tintColor = UIColor(red: 250.0/255.0, green: 194.0/255.0, blue: 35.0/255.0, alpha: 1)
-        (segmentController.subviews[0] as UIView).tintColor = UIColor(red: 230/255.0, green: 175.0/255.0, blue: 10.0/255.0, alpha: 1)
-        (segmentController.subviews[0] as UIView).backgroundColor = UIColor.whiteColor()
-   
-        
+        (segmentController.subviews[1] as UIView).backgroundColor = UIColor(red: 252.0/255.0, green: 207.0/255.0, blue: 80.0/255.0, alpha: 1)
+//        (segmentController.subviews[1] as UIView).tintColor = UIColor(red: 250.0/255.0, green: 194.0/255.0, blue: 35.0/255.0, alpha: 1)
+//        (segmentController.subviews[0] as UIView).tintColor = UIColor(red: 230/255.0, green: 175.0/255.0, blue: 10.0/255.0, alpha: 1)
+//        (segmentController.subviews[0] as UIView).backgroundColor = UIColor.redColor().CGColor
+        (segmentController.subviews[0] as UIView).backgroundColor = UIColor(red: 252.0/255.0, green: 207.0/255.0, blue: 80.0/255.0, alpha: 1)
         if(Appconstant.notificationcount > 0){
             badgebtn.hidden = false
             badgebtn.setTitle("\(Appconstant.notificationcount)", forState: .Normal)
@@ -86,6 +101,7 @@ class SendOrAskMoneyViewController: UIViewController, CNContactPickerDelegate, U
         }
     }
     
+    
     func textViewDidChange(textView: UITextView)
     {
         print(textView.text);
@@ -104,24 +120,33 @@ class SendOrAskMoneyViewController: UIViewController, CNContactPickerDelegate, U
         
     }
     @IBAction func segmentBtnAction(sender: AnyObject) {
-   
+   if(segmentController.selectedSegmentIndex == 0)
         
+   {
+    segmentlbl1.layer.backgroundColor = UIColor.whiteColor().CGColor
+    segmentlbl2.layer.backgroundColor = UIColor(red: 250.0/255.0, green: 194.0/255.0, blue: 35.0/255.0, alpha: 1).CGColor
+            }
+        else
+   {
+    segmentlbl2.layer.backgroundColor = UIColor.whiteColor().CGColor
+    segmentlbl1.layer.backgroundColor = UIColor(red: 250.0/255.0, green: 194.0/255.0, blue: 35.0/255.0, alpha: 1).CGColor
+     }
          switch segmentController.selectedSegmentIndex {
         case 0:
-            (segmentController.subviews[1] as UIView).backgroundColor = UIColor.whiteColor()
-            (segmentController.subviews[1] as UIView).tintColor = UIColor(red: 250.0/255.0, green: 194.0/255.0, blue: 35.0/255.0, alpha: 1)
-            (segmentController.subviews[0] as UIView).tintColor = UIColor(red: 230/255.0, green: 175.0/255.0, blue: 10.0/255.0, alpha: 1)
-            (segmentController.subviews[0] as UIView).backgroundColor = UIColor.whiteColor();            view.endEditing(true)
+//            (segmentController.subviews[1] as UIView).backgroundColor = UIColor.whiteColor()
+//                        (segmentController.subviews[1] as UIView).tintColor = UIColor(red: 250.0/255.0, green: 194.0/255.0, blue: 35.0/255.0, alpha: 1)
+//            (segmentController.subviews[0] as UIView).tintColor = UIColor(red: 230/255.0, green: 175.0/255.0, blue: 10.0/255.0, alpha: 1)
+////            (segmentController.subviews[0] as UIView).backgroundColor = UIColor.whiteColor();
             moneybtn.setTitle("SEND MONEY", forState: .Normal)
             askmoney = false
             sendmoney = true
-
-            
-        case 1:
-            (segmentController.subviews[0] as UIView).backgroundColor = UIColor.whiteColor()
-            (segmentController.subviews[0] as UIView).tintColor = UIColor(red: 250.0/255.0, green: 194.0/255.0, blue: 35.0/255.0, alpha: 1)
-            (segmentController.subviews[1] as UIView).tintColor = UIColor(red: 230/255.0, green: 175.0/255.0, blue: 10.0/255.0, alpha: 1)
-            (segmentController.subviews[1] as UIView).backgroundColor = UIColor.whiteColor();            moneybtn.setTitle("ASK MONEY", forState: .Normal)
+            view.endEditing(true)
+                    case 1:
+//            (segmentController.subviews[0] as UIView).backgroundColor = UIColor.whiteColor()
+//            (segmentController.subviews[0] as UIView).tintColor = UIColor(red: 250.0/255.0, green: 194.0/255.0, blue: 35.0/255.0, alpha: 1)
+//            (segmentController.subviews[1] as UIView).tintColor = UIColor(red: 230/255.0, green: 175.0/255.0, blue: 10.0/255.0, alpha: 1)
+//            (segmentController.subviews[1] as UIView).backgroundColor = UIColor.whiteColor()
+        moneybtn.setTitle("ASK MONEY", forState: .Normal)
 
             askmoney = true
             sendmoney = false
@@ -930,8 +955,7 @@ class SendOrAskMoneyViewController: UIViewController, CNContactPickerDelegate, U
                     }
                 }
         }
-        
-        task.resume()
+                task.resume()
         
     }
     
@@ -951,4 +975,37 @@ class SendOrAskMoneyViewController: UIViewController, CNContactPickerDelegate, U
             nextview.businessid = contact_number
         }
     }
+    override func viewWillDisappear(animated: Bool) {
+        self.navigationController?.navigationBar.hidden = false
+    }
+    
+    func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
+        
+        print(viewController.parentViewController)
+        print(viewController)
+        
+        
+        let tabBarIndex = tabBarController.selectedIndex
+        if tabBarIndex == 0 {
+            print("Selected item")
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let controller = storyboard.instantiateViewControllerWithIdentifier("RevealView")
+            
+            
+            //            let HomeVc: HomeViewController = HomeViewController()
+            //
+            self.navigationController?.pushViewController(controller, animated: true)
+            //            self.navigationController?.pushViewController(HomeVc, animated: true)
+        }
+        else if tabBarIndex == 1 {
+            print("Selected item")
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let controller = storyboard.instantiateViewControllerWithIdentifier("MyAccount")
+            self.navigationController?.pushViewController(controller, animated: true)
+            //            self.navigationController?.pushViewController(HomeVc, animated: true)
+        }
+
+}
 }

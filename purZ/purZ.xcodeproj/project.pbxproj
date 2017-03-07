@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D0635C51E671D8C00046007 /* BrowsePlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0635C21E671D8C00046007 /* BrowsePlanViewController.swift */; };
+		5D0635C61E671D8C00046007 /* operatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0635C31E671D8C00046007 /* operatorViewController.swift */; };
+		5D0635C71E671D8C00046007 /* RechargeorPayBills.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0635C41E671D8C00046007 /* RechargeorPayBills.swift */; };
+		5D0635C91E671DC000046007 /* PlanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0635C81E671DC000046007 /* PlanViewModel.swift */; };
+		5D0635CB1E6724C400046007 /* rechargeorPayBill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0635CA1E6724C400046007 /* rechargeorPayBill.swift */; };
+		5D0635CD1E67250B00046007 /* ModelViewforRecharge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0635CC1E67250B00046007 /* ModelViewforRecharge.swift */; };
+		5D0635CF1E67259F00046007 /* Mobileseries.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5D0635CE1E67259F00046007 /* Mobileseries.txt */; };
+		5D0635D11E6725BE00046007 /* mobileSeries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0635D01E6725BE00046007 /* mobileSeries.swift */; };
+		5D0AFC9F1E5C586E0097927F /* contactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0AFC9E1E5C586E0097927F /* contactViewController.swift */; };
+		5D0AFCA11E5C89CD0097927F /* exitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0AFCA01E5C89CD0097927F /* exitViewController.swift */; };
 		5D0F27A01E41CCF30088E909 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0F279F1E41CCF30088E909 /* AppDelegate.swift */; };
 		5D0F27A21E41CCF30088E909 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0F27A11E41CCF30088E909 /* ViewController.swift */; };
 		5D0F27A51E41CCF30088E909 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D0F27A31E41CCF30088E909 /* Main.storyboard */; };
@@ -36,7 +46,6 @@
 		5D0F28051E41D1010088E909 /* SplitbillViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0F28001E41D1010088E909 /* SplitbillViewModel.swift */; };
 		5D0F28061E41D1010088E909 /* TransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0F28011E41D1010088E909 /* TransactionViewModel.swift */; };
 		5D0F28081E41D1180088E909 /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0F28071E41D1180088E909 /* SignupViewModel.swift */; };
-		5D0F280B1E41D1F70088E909 /* RechargeorPayBillViewController copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0F280A1E41D1F70088E909 /* RechargeorPayBillViewController copy.swift */; };
 		5D0F28161E41D2E20088E909 /* PayatStoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0F28131E41D2E20088E909 /* PayatStoreViewController.swift */; };
 		5D0F28171E41D2E20088E909 /* PaymentSuccessfulViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0F28141E41D2E20088E909 /* PaymentSuccessfulViewController.swift */; };
 		5D0F28181E41D2E20088E909 /* ProfileSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0F28151E41D2E20088E909 /* ProfileSettingsViewController.swift */; };
@@ -59,12 +68,16 @@
 		5D0F28441E41E6B70088E909 /* SigninViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0F28421E41E6B70088E909 /* SigninViewController.swift */; };
 		5D0F28451E41E6B70088E909 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0F28431E41E6B70088E909 /* SignupViewController.swift */; };
 		5D29B21E1E4366E900F0CCDE /* OTPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0F28401E41E55C0088E909 /* OTPViewController.swift */; };
+		5D371ADA1E67DBF600FC5FCC /* Providers.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5D371AD91E67DBF600FC5FCC /* Providers.txt */; };
+		5D3E30501E694AA70049EA8F /* PayBillModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3E304F1E694AA70049EA8F /* PayBillModel.swift */; };
+		5D3E30521E694E500049EA8F /* FetchBillModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3E30511E694E500049EA8F /* FetchBillModel.swift */; };
 		5D45B43D1E4C60C2000C32F7 /* SendOrAskMoneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D45B43C1E4C60C2000C32F7 /* SendOrAskMoneyViewController.swift */; };
 		5D45B43F1E4C6152000C32F7 /* myAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D45B43E1E4C6152000C32F7 /* myAccountViewController.swift */; };
 		5D45B4411E4C6DA9000C32F7 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D45B4401E4C6DA9000C32F7 /* NotificationViewController.swift */; };
 		5D45B4431E4C6DBD000C32F7 /* TransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D45B4421E4C6DBD000C32F7 /* TransactionViewController.swift */; };
 		5D45B4451E4C6E4B000C32F7 /* changePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D45B4441E4C6E4B000C32F7 /* changePasswordViewController.swift */; };
 		5D45B4471E4C6EA0000C32F7 /* CompleteProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D45B4461E4C6EA0000C32F7 /* CompleteProfileViewController.swift */; };
+		5D4AAF671E5EEE4D00B3ABDC /* TransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4AAF661E5EEE4D00B3ABDC /* TransactionsViewController.swift */; };
 		5D4EC02D1E52E22C00662F39 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4EC02C1E52E22C00662F39 /* SideMenuViewController.swift */; };
 		5D50FF331E543B8F00AD2941 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D50FF321E543B8F00AD2941 /* SWRevealViewController.m */; };
 /* End PBXBuildFile section */
@@ -88,7 +101,17 @@
 
 /* Begin PBXFileReference section */
 		593ABBF6BE1B70A09AB4530F /* Pods-purZ.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-purZ.release.xcconfig"; path = "Pods/Target Support Files/Pods-purZ/Pods-purZ.release.xcconfig"; sourceTree = "<group>"; };
-		5D0F279C1E41CCF30088E909 /* PurZ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PurZ.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D0635C21E671D8C00046007 /* BrowsePlanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BrowsePlanViewController.swift; path = purZ/BrowsePlanViewController.swift; sourceTree = "<group>"; };
+		5D0635C31E671D8C00046007 /* operatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = operatorViewController.swift; path = purZ/operatorViewController.swift; sourceTree = "<group>"; };
+		5D0635C41E671D8C00046007 /* RechargeorPayBills.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RechargeorPayBills.swift; path = purZ/RechargeorPayBills.swift; sourceTree = "<group>"; };
+		5D0635C81E671DC000046007 /* PlanViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlanViewModel.swift; path = purZ/PlanViewModel.swift; sourceTree = "<group>"; };
+		5D0635CA1E6724C400046007 /* rechargeorPayBill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rechargeorPayBill.swift; sourceTree = "<group>"; };
+		5D0635CC1E67250B00046007 /* ModelViewforRecharge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelViewforRecharge.swift; sourceTree = "<group>"; };
+		5D0635CE1E67259F00046007 /* Mobileseries.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Mobileseries.txt; sourceTree = "<group>"; };
+		5D0635D01E6725BE00046007 /* mobileSeries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mobileSeries.swift; sourceTree = "<group>"; };
+		5D0AFC9E1E5C586E0097927F /* contactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = contactViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		5D0AFCA01E5C89CD0097927F /* exitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = exitViewController.swift; path = purZ/exitViewController.swift; sourceTree = "<group>"; };
+		5D0F279C1E41CCF30088E909 /* purZ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = purZ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D0F279F1E41CCF30088E909 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5D0F27A11E41CCF30088E909 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5D0F27A41E41CCF30088E909 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -106,7 +129,7 @@
 		5D0F27D01E41CD9D0088E909 /* Calibri.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Calibri.ttf; sourceTree = "<group>"; };
 		5D0F27D11E41CDBA0088E909 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		5D0F27D51E41CDEF0088E909 /* FourdigitpasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FourdigitpasswordViewController.swift; sourceTree = "<group>"; };
-		5D0F27D61E41CDEF0088E909 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		5D0F27D61E41CDEF0088E909 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = HomeViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		5D0F27DD1E41CE790088E909 /* purZ-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "purZ-Bridging-Header.h"; sourceTree = "<group>"; };
 		5D0F27DE1E41CE790088E909 /* AppConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstant.swift; sourceTree = "<group>"; };
 		5D0F27DF1E41CE790088E909 /* DBHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
@@ -132,12 +155,11 @@
 		5D0F28001E41D1010088E909 /* SplitbillViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplitbillViewModel.swift; sourceTree = "<group>"; };
 		5D0F28011E41D1010088E909 /* TransactionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionViewModel.swift; sourceTree = "<group>"; };
 		5D0F28071E41D1180088E909 /* SignupViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
-		5D0F280A1E41D1F70088E909 /* RechargeorPayBillViewController copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RechargeorPayBillViewController copy.swift"; sourceTree = "<group>"; };
 		5D0F28131E41D2E20088E909 /* PayatStoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayatStoreViewController.swift; sourceTree = "<group>"; };
 		5D0F28141E41D2E20088E909 /* PaymentSuccessfulViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentSuccessfulViewController.swift; sourceTree = "<group>"; };
 		5D0F28151E41D2E20088E909 /* ProfileSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSettingsViewController.swift; sourceTree = "<group>"; };
 		5D0F281B1E41D3BF0088E909 /* TransactionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionModel.swift; sourceTree = "<group>"; };
-		5D0F28211E41D4220088E909 /* AddMoneyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMoneyViewController.swift; sourceTree = "<group>"; };
+		5D0F28211E41D4220088E909 /* AddMoneyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AddMoneyViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		5D0F28221E41D4220088E909 /* SplitBillViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplitBillViewController.swift; sourceTree = "<group>"; };
 		5D0F28231E41D4220088E909 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		5D0F28281E41D4C60088E909 /* QRCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCode.h; sourceTree = "<group>"; };
@@ -153,12 +175,16 @@
 		5D0F28401E41E55C0088E909 /* OTPViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTPViewController.swift; sourceTree = "<group>"; };
 		5D0F28421E41E6B70088E909 /* SigninViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SigninViewController.swift; sourceTree = "<group>"; };
 		5D0F28431E41E6B70088E909 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		5D371AD91E67DBF600FC5FCC /* Providers.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Providers.txt; sourceTree = "<group>"; };
+		5D3E304F1E694AA70049EA8F /* PayBillModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayBillModel.swift; sourceTree = "<group>"; };
+		5D3E30511E694E500049EA8F /* FetchBillModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchBillModel.swift; sourceTree = "<group>"; };
 		5D45B43C1E4C60C2000C32F7 /* SendOrAskMoneyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendOrAskMoneyViewController.swift; sourceTree = "<group>"; };
 		5D45B43E1E4C6152000C32F7 /* myAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = myAccountViewController.swift; sourceTree = "<group>"; };
 		5D45B4401E4C6DA9000C32F7 /* NotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		5D45B4421E4C6DBD000C32F7 /* TransactionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionViewController.swift; sourceTree = "<group>"; };
 		5D45B4441E4C6E4B000C32F7 /* changePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = changePasswordViewController.swift; sourceTree = "<group>"; };
 		5D45B4461E4C6EA0000C32F7 /* CompleteProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompleteProfileViewController.swift; sourceTree = "<group>"; };
+		5D4AAF661E5EEE4D00B3ABDC /* TransactionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionsViewController.swift; sourceTree = "<group>"; };
 		5D4EC02C1E52E22C00662F39 /* SideMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SideMenuViewController.swift; path = purZ/SideMenuViewController.swift; sourceTree = "<group>"; };
 		5D50FF311E543B8F00AD2941 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		5D50FF321E543B8F00AD2941 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
@@ -217,6 +243,7 @@
 				5D0F280C1E41D2030088E909 /* Profile &pay@ shop */,
 				5D0F27FC1E41D0630088E909 /* model */,
 				5D0F28091E41D1680088E909 /* Recharge/paybill */,
+				5D5A99911E653DAB0048274B /* My Account */,
 				5D0F27D31E41CDC90088E909 /* Home */,
 				5D0F27DC1E41CE030088E909 /* Helper Class */,
 				5D0F27B31E41CCF30088E909 /* purZTests */,
@@ -229,7 +256,7 @@
 		5D0F279D1E41CCF30088E909 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5D0F279C1E41CCF30088E909 /* PurZ.app */,
+				5D0F279C1E41CCF30088E909 /* purZ.app */,
 				5D0F27B01E41CCF30088E909 /* purZTests.xctest */,
 				5D0F27BB1E41CCF30088E909 /* purZUITests.xctest */,
 			);
@@ -239,6 +266,8 @@
 		5D0F279E1E41CCF30088E909 /* PurZ */ = {
 			isa = PBXGroup;
 			children = (
+				5D371AD91E67DBF600FC5FCC /* Providers.txt */,
+				5D0635CE1E67259F00046007 /* Mobileseries.txt */,
 				5D0F279F1E41CCF30088E909 /* AppDelegate.swift */,
 				5D0F27A11E41CCF30088E909 /* ViewController.swift */,
 				5D0F27A31E41CCF30088E909 /* Main.storyboard */,
@@ -271,16 +300,16 @@
 		5D0F27D31E41CDC90088E909 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				5D0AFCA01E5C89CD0097927F /* exitViewController.swift */,
 				5D4EC02C1E52E22C00662F39 /* SideMenuViewController.swift */,
 				5D0F28421E41E6B70088E909 /* SigninViewController.swift */,
 				5D0F28431E41E6B70088E909 /* SignupViewController.swift */,
 				5D45B43C1E4C60C2000C32F7 /* SendOrAskMoneyViewController.swift */,
-				5D45B4441E4C6E4B000C32F7 /* changePasswordViewController.swift */,
+				5D0AFC9E1E5C586E0097927F /* contactViewController.swift */,
 				5D0F28401E41E55C0088E909 /* OTPViewController.swift */,
 				5D0F27D51E41CDEF0088E909 /* FourdigitpasswordViewController.swift */,
 				5D45B4461E4C6EA0000C32F7 /* CompleteProfileViewController.swift */,
 				5D0F27D61E41CDEF0088E909 /* HomeViewController.swift */,
-				5D45B43E1E4C6152000C32F7 /* myAccountViewController.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -312,12 +341,18 @@
 		5D0F27FC1E41D0630088E909 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				5D0635CC1E67250B00046007 /* ModelViewforRecharge.swift */,
 				5D0F27FD1E41D1010088E909 /* AddMoneyViewModel.swift */,
+				5D3E30511E694E500049EA8F /* FetchBillModel.swift */,
 				5D0F27FE1E41D1010088E909 /* AskMoneyViewModel.swift */,
 				5D0F27FF1E41D1010088E909 /* RechargeViewModel.swift */,
 				5D0F28071E41D1180088E909 /* SignupViewModel.swift */,
 				5D0F28001E41D1010088E909 /* SplitbillViewModel.swift */,
 				5D0F28011E41D1010088E909 /* TransactionViewModel.swift */,
+				5D0635C81E671DC000046007 /* PlanViewModel.swift */,
+				5D0635CA1E6724C400046007 /* rechargeorPayBill.swift */,
+				5D3E304F1E694AA70049EA8F /* PayBillModel.swift */,
+				5D0635D01E6725BE00046007 /* mobileSeries.swift */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -325,7 +360,9 @@
 		5D0F28091E41D1680088E909 /* Recharge/paybill */ = {
 			isa = PBXGroup;
 			children = (
-				5D0F280A1E41D1F70088E909 /* RechargeorPayBillViewController copy.swift */,
+				5D0635C21E671D8C00046007 /* BrowsePlanViewController.swift */,
+				5D0635C31E671D8C00046007 /* operatorViewController.swift */,
+				5D0635C41E671D8C00046007 /* RechargeorPayBills.swift */,
 			);
 			name = Recharge/paybill;
 			sourceTree = "<group>";
@@ -335,7 +372,6 @@
 			children = (
 				5D0F28131E41D2E20088E909 /* PayatStoreViewController.swift */,
 				5D0F28141E41D2E20088E909 /* PaymentSuccessfulViewController.swift */,
-				5D0F28151E41D2E20088E909 /* ProfileSettingsViewController.swift */,
 			);
 			name = "Profile &pay@ shop";
 			sourceTree = "<group>";
@@ -346,6 +382,7 @@
 				5D45B4401E4C6DA9000C32F7 /* NotificationViewController.swift */,
 				5D0F281B1E41D3BF0088E909 /* TransactionModel.swift */,
 				5D45B4421E4C6DBD000C32F7 /* TransactionViewController.swift */,
+				5D4AAF661E5EEE4D00B3ABDC /* TransactionsViewController.swift */,
 			);
 			name = "Transaction & Nodification";
 			sourceTree = "<group>";
@@ -395,6 +432,16 @@
 			name = SwReavealViewController;
 			sourceTree = "<group>";
 		};
+		5D5A99911E653DAB0048274B /* My Account */ = {
+			isa = PBXGroup;
+			children = (
+				5D45B4441E4C6E4B000C32F7 /* changePasswordViewController.swift */,
+				5D45B43E1E4C6152000C32F7 /* myAccountViewController.swift */,
+				5D0F28151E41D2E20088E909 /* ProfileSettingsViewController.swift */,
+			);
+			name = "My Account";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -415,7 +462,7 @@
 			);
 			name = purZ;
 			productName = purZ;
-			productReference = 5D0F279C1E41CCF30088E909 /* PurZ.app */;
+			productReference = 5D0F279C1E41CCF30088E909 /* purZ.app */;
 			productType = "com.apple.product-type.application";
 		};
 		5D0F27AF1E41CCF30088E909 /* purZTests */ = {
@@ -506,6 +553,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D0F27FB1E41D01E0088E909 /* Podfile in Resources */,
+				5D0635CF1E67259F00046007 /* Mobileseries.txt in Resources */,
+				5D371ADA1E67DBF600FC5FCC /* Providers.txt in Resources */,
 				5D0F283E1E41D52E0088E909 /* (null) in Resources */,
 				5D0F27AA1E41CCF30088E909 /* LaunchScreen.storyboard in Resources */,
 				5D0F283F1E41D52E0088E909 /* (null) in Resources */,
@@ -590,8 +639,10 @@
 				5D0F28451E41E6B70088E909 /* SignupViewController.swift in Sources */,
 				5D0F28331E41D4C60088E909 /* QRCodeReader.swift in Sources */,
 				5D0F27F31E41CE790088E909 /* FMDatabasePool.m in Sources */,
+				5D0635D11E6725BE00046007 /* mobileSeries.swift in Sources */,
 				5D0F28031E41D1010088E909 /* AskMoneyViewModel.swift in Sources */,
 				5D0F281E1E41D3BF0088E909 /* TransactionModel.swift in Sources */,
+				5D3E30521E694E500049EA8F /* FetchBillModel.swift in Sources */,
 				5D0F28351E41D4C60088E909 /* QRCodeViewController.swift in Sources */,
 				5D0F28321E41D4C60088E909 /* QRCode.swift in Sources */,
 				5D0F28021E41D1010088E909 /* AddMoneyViewModel.swift in Sources */,
@@ -601,32 +652,41 @@
 				5D0F28341E41D4C60088E909 /* QRCodeReaderResult.swift in Sources */,
 				5D0F28411E41E55C0088E909 /* OTPViewController.swift in Sources */,
 				5D0F27A21E41CCF30088E909 /* ViewController.swift in Sources */,
+				5D0635C71E671D8C00046007 /* RechargeorPayBills.swift in Sources */,
 				5D0F27F41E41CE790088E909 /* FMDatabaseQueue.m in Sources */,
+				5D3E30501E694AA70049EA8F /* PayBillModel.swift in Sources */,
 				5D0F28171E41D2E20088E909 /* PaymentSuccessfulViewController.swift in Sources */,
 				5D0F27F11E41CE790088E909 /* FMDatabase.m in Sources */,
 				5D0F27EE1E41CE790088E909 /* AppConstant.swift in Sources */,
 				5D45B4451E4C6E4B000C32F7 /* changePasswordViewController.swift in Sources */,
 				5D0F27A01E41CCF30088E909 /* AppDelegate.swift in Sources */,
 				5D0F28441E41E6B70088E909 /* SigninViewController.swift in Sources */,
+				5D0635CB1E6724C400046007 /* rechargeorPayBill.swift in Sources */,
 				5D0F28251E41D4220088E909 /* SplitBillViewController.swift in Sources */,
 				5D0F28261E41D4220088E909 /* WebViewController.swift in Sources */,
+				5D4AAF671E5EEE4D00B3ABDC /* TransactionsViewController.swift in Sources */,
 				5D0F28361E41D4C60088E909 /* QRCodeViewControllerBuilder.swift in Sources */,
 				5D0F28161E41D2E20088E909 /* PayatStoreViewController.swift in Sources */,
+				5D0635C51E671D8C00046007 /* BrowsePlanViewController.swift in Sources */,
 				5D0F28371E41D4C60088E909 /* QRHelper.swift in Sources */,
 				5D0F283A1E41D4C60088E909 /* ToggleTorchButton.swift in Sources */,
 				5D0F28041E41D1010088E909 /* RechargeViewModel.swift in Sources */,
+				5D0635C91E671DC000046007 /* PlanViewModel.swift in Sources */,
 				5D45B43F1E4C6152000C32F7 /* myAccountViewController.swift in Sources */,
 				5D0F27F71E41CE790088E909 /* SwiftyJson.swift in Sources */,
 				5D45B4471E4C6EA0000C32F7 /* CompleteProfileViewController.swift in Sources */,
+				5D0AFC9F1E5C586E0097927F /* contactViewController.swift in Sources */,
 				5D0F28391E41D4C60088E909 /* SwitchCameraButton.swift in Sources */,
 				5D0F28181E41D2E20088E909 /* ProfileSettingsViewController.swift in Sources */,
 				5D0F27F21E41CE790088E909 /* FMDatabaseAdditions.m in Sources */,
 				5D45B4411E4C6DA9000C32F7 /* NotificationViewController.swift in Sources */,
 				5D0F28081E41D1180088E909 /* SignupViewModel.swift in Sources */,
 				5D0F28241E41D4220088E909 /* AddMoneyViewController.swift in Sources */,
-				5D0F280B1E41D1F70088E909 /* RechargeorPayBillViewController copy.swift in Sources */,
+				5D0635C61E671D8C00046007 /* operatorViewController.swift in Sources */,
+				5D0635CD1E67250B00046007 /* ModelViewforRecharge.swift in Sources */,
 				5D0F27D91E41CDEF0088E909 /* FourdigitpasswordViewController.swift in Sources */,
 				5D0F28051E41D1010088E909 /* SplitbillViewModel.swift in Sources */,
+				5D0AFCA11E5C89CD0097927F /* exitViewController.swift in Sources */,
 				5D45B4431E4C6DBD000C32F7 /* TransactionViewController.swift in Sources */,
 				5D0F27EF1E41CE790088E909 /* DBHelper.swift in Sources */,
 				5D0F28381E41D4C60088E909 /* ReaderOverlayView.swift in Sources */,
@@ -782,7 +842,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.purZ;
-				PRODUCT_NAME = PurZ;
+				PRODUCT_NAME = purZ;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "purZ-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -801,7 +861,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.purZ;
-				PRODUCT_NAME = PurZ;
+				PRODUCT_NAME = purZ;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "purZ-Bridging-Header.h";
 			};

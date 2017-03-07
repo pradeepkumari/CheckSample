@@ -33,6 +33,7 @@ class FourdigitpasswordViewController: UIViewController {
     
     @IBOutlet weak var backwardbtn: UIButton!
     
+    @IBOutlet weak var clickherebtn: UIButton!
     @IBOutlet weak var roundlab1: UILabel!
     
     @IBOutlet weak var roundlab2: UILabel!
@@ -40,11 +41,14 @@ class FourdigitpasswordViewController: UIViewController {
     @IBOutlet weak var roundlab4: UILabel!
     @IBOutlet weak var roundlab3: UILabel!
     
-    @IBOutlet weak var namelab: UILabel!
-    override func viewDidLoad() {
+    @IBOutlet weak var namelbl: UILabel!
+          override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+            navigationController?.navigationBarHidden = true
+               namelbl.text = "Hi," + Appconstant.customername + "!"
+        namelbl.layer.borderColor = UIColor.clearColor().CGColor
+//        namelbl.textColor = UIColor.yellowColor()
+            // Do any additional setup after loading the view.
         btn1.layer.cornerRadius = self.btn1.frame.size.height/2
         btn2.layer.cornerRadius = self.btn2.frame.size.height/2
         
@@ -76,6 +80,9 @@ class FourdigitpasswordViewController: UIViewController {
         roundlab4.layer.masksToBounds = true
         roundlab4.layer.borderWidth = 1.0
         roundlab4.layer.borderColor = UIColor.blackColor().CGColor
+        let underlineAttribute = [NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue]
+        clickherebtn.titleLabel?.attributedText = NSAttributedString(string: "Click here!", attributes: underlineAttribute)
+
         namedbcall()
     }
     func namedbcall()
@@ -88,7 +95,7 @@ if purzDB.open() {
     
     let result:FMResultSet! = purzDB.executeQuery(selectSQL,
         withArgumentsInArray: nil)
-    namelab.text = result.stringForColumn("CUSTOMER_NAME")
+//    namelab.text = result.stringForColumn("CUSTOMER_NAME")
     
         }
     }

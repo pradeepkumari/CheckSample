@@ -27,7 +27,9 @@ class CompleteProfileViewController: UIViewController, UIImagePickerControllerDe
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-    
+        navigationController?.navigationBarHidden = true
+        
+
         
         imagePicker.delegate = self
         profileimg.layer.cornerRadius = self.profileimg.frame.size.height/2

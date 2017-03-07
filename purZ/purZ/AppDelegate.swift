@@ -26,6 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GGLInstanceIDDelegate, GC
 
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        UINavigationBar.appearance().tintColor = UIColor.blackColor()
+
         // Override point for customization after application launch.
 //       FIRApp.configure()
         
@@ -226,7 +228,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GGLInstanceIDDelegate, GC
     func applicationWillEnterForeground(application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     }
-
+    func tabBarController(tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        let tabBarIndex = tabBarController.selectedIndex
+        if tabBarIndex == 2 {
+            let alert = UIAlertController(title: "Are you sure want to logout?", message: "", preferredStyle: UIAlertControllerStyle.Alert)
+            //             alert.setValue(attributedString, forKey: "attributedTitle")
+            alert.addAction(UIAlertAction(title: "YES", style: UIAlertActionStyle.Default, handler: { alertAction in
+                exit(0)
+                
+            }))
+            
+            alert.addAction(UIAlertAction(title: "CANCEL", style: UIAlertActionStyle.Default, handler: { alertAction in
+            }))
+            // Do any additional setup
+        }
+    }
+//    func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
+//        
+//        let tabBarIndex = tabBarController.selectedIndex
+//        if tabBarIndex == 0 {
+//            print("Selected item")
+//            let HomeVc = SWRevealViewController()
+//
+//            
+//            
+//        }
+//        }
 
 }
 

@@ -67,6 +67,7 @@ class OTPViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBarHidden = true
         resentotpbtn.titleLabel!.lineBreakMode = .ByWordWrapping
         resentotpbtn.titleLabel!.textAlignment = .Center;        resentotpbtn.setTitle("Resend\nOTP", forState: .Normal)
         backgroundlbl.layer.cornerRadius = backgroundlbl.frame.width/2
@@ -791,7 +792,7 @@ class OTPViewController: UIViewController, UITextFieldDelegate {
                                     
                                     let action = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {[weak self](paramAction:UIAlertAction!) in
                                         dispatch_async(dispatch_get_main_queue()) {
-                                            self!.performSegueWithIdentifier("to_complete_profile", sender: self)
+                                            self!.performSegueWithIdentifier("otp_homepage", sender: self)
                                         }
                                         
                                         })
@@ -897,37 +898,37 @@ class OTPViewController: UIViewController, UITextFieldDelegate {
             nextview.remarks_txt = remark
             nextview.fromotp = true
         }
-        if(segue.identifier == "otp_recharge"){
-            let nextview = segue.destinationViewController as! RechargeorPayBillViewController
-            nextview.recharge_amount = self.recharge_amount
-            nextview.operatorcode = self.recharge_operatorcode
-            nextview.recharge_number = self.recharge_number
-            nextview.switchvalue = self.recharge_switchvalue
-            nextview.special = self.recharge_special
-            nextview.radio = self.recharge_radio
-            nextview.providername = self.providername
-            nextview.radioview = radioview
-            nextview.fromotp = true
-            
-            
-            nextview.pre_operatorCode = self.pre_operatorCode
-            nextview.pre_operatorName = self.pre_operatorName
-            nextview.pre_operatorId = self.pre_operatorId
-            nextview.pre_operatorType = self.pre_operatorType
-            nextview.pre_special = self.pre_special
-            nextview.post_operatorCode = self.post_operatorCode
-            nextview.post_operatorName = self.post_operatorName
-            nextview.post_operatorId = self.post_operatorId
-            nextview.post_operatorType = self.post_operatorType
-            nextview.post_special = self.post_special
-            nextview.dth_operatorCode = self.dth_operatorCode
-            nextview.dth_operatorName = self.dth_operatorName
-            nextview.dth_operatorId = self.dth_operatorId
-            nextview.dth_operatorType = self.dth_operatorType
-            nextview.dth_special = self.dth_special
-            nextview.dth = dth
-            nextview.dthprovidername = dthprovidername
-        }
+//        if(segue.identifier == "otp_recharge"){
+//            let nextview = segue.destinationViewController as! RechargeorPayBill
+////            nextview.recharge_amount = self.recharge_amount
+////            nextview.operatorcode = self.recharge_operatorcode
+////            nextview.recharge_number = self.recharge_number
+////            nextview.switchvalue = self.recharge_switchvalue
+////            nextview.special = self.recharge_special
+////            nextview.radio = self.recharge_radio
+////            nextview.providername = self.providername
+////            nextview.radioview = radioview
+////            nextview.fromotp = true
+////            
+////            
+////            nextview.pre_operatorCode = self.pre_operatorCode
+////            nextview.pre_operatorName = self.pre_operatorName
+////            nextview.pre_operatorId = self.pre_operatorId
+////            nextview.pre_operatorType = self.pre_operatorType
+////            nextview.pre_special = self.pre_special
+////            nextview.post_operatorCode = self.post_operatorCode
+////            nextview.post_operatorName = self.post_operatorName
+////            nextview.post_operatorId = self.post_operatorId
+////            nextview.post_operatorType = self.post_operatorType
+////            nextview.post_special = self.post_special
+////            nextview.dth_operatorCode = self.dth_operatorCode
+////            nextview.dth_operatorName = self.dth_operatorName
+////            nextview.dth_operatorId = self.dth_operatorId
+////            nextview.dth_operatorType = self.dth_operatorType
+////            nextview.dth_special = self.dth_special
+////            nextview.dth = dth
+////            nextview.dthprovidername = dthprovidername
+//        }
         if(segue.identifier == "backtopay"){
             let nextview = segue.destinationViewController as! PayatStoreViewController
             nextview.merchantcode = merchantcode

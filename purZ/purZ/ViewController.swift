@@ -17,10 +17,35 @@ class ViewController: UIViewController, UIScrollViewDelegate {
 //    var timer = NSTimer()
     
 
-    @IBOutlet weak var funbankingimage: UIImageView!
     @IBOutlet weak var logoimage: UIImageView!
-    override func viewDidLoad() {
+    @IBOutlet weak var funbankingimage: UIImageView!
+//    @IBOutlet weak var logoimage: UIImageView!
+    var timer = NSTimer()
+    var a: CGFloat = 1.0
+     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBarHidden = true
+//        var pulseAnimation:CABasicAnimation = CABasicAnimation(keyPath: "opacity")
+////        pulseAnimation.duration = 5.0
+////        pulseAnimation.fromValue = NSNumber(float: 0.0)
+//        pulseAnimation.toValue = NSNumber(float: 4.0)
+//        pulseAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+//        pulseAnimation.autoreverses = true
+//        pulseAnimation.repeatCount = Float.infinity
+        let pulseAnimation = CABasicAnimation(keyPath: "opacity")
+        pulseAnimation.duration = 2
+        pulseAnimation.fromValue = 0
+        pulseAnimation.toValue = 5
+        pulseAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        pulseAnimation.autoreverses = true
+        pulseAnimation.repeatCount = FLT_MAX
+        self.funbankingimage.layer.addAnimation(pulseAnimation, forKey: "animateOpacity")
+        funbankingimage.layer.addAnimation(pulseAnimation, forKey: "opacity")
+        a = 1.0
+        calldatabase()
+//        self.timer = NSTimer.scheduledTimerWithTimeInterval(
+//            0.01, target: self, selector: #selector(addLogo), userInfo: nil, repeats: true)
+
 //        self.logobackscrollview.minimumZoomScale = 1.0
 //        self.logobackscrollview.maximumZoomScale = 6.0
 //         NSRunLoop.currentRunLoop().runUntilDate(NSDate(timeIntervalSinceNow: 1))
@@ -31,7 +56,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
 //        timer = NSTimer.scheduledTimerWithTimeInterval(
 //            0.1, target: self, selector: Selector("setProgressBar"), userInfo: nil, repeats: true)
         logoimage.layer.borderWidth = 2
-        logoimage.layer.masksToBounds = false
+//        logoimage.layer.masksToBounds = false
         logoimage.layer.borderColor = UIColor(red:230/255.0, green:175/255.0, blue:7/255.0, alpha:1.0).CGColor;
         logoimage.layer.cornerRadius =  logoimage.frame.size.height/2
         logoimage.clipsToBounds = true
@@ -40,17 +65,58 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         funbankingimage.layer.borderColor = UIColor(red:230/255.0, green:175/255.0, blue:7/255.0, alpha:1.0).CGColor; 
         funbankingimage.layer.cornerRadius =  funbankingimage.frame.size.height/2
         funbankingimage.clipsToBounds = true
-        func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView?
-        {
-            return self.logoimage
-        }
+//       logoimage.hidden = true
+        self.view.backgroundColor = UIColor.whiteColor()
+        
+        //        addBackgroundImage()
+        //        addLogo()
+                      navigationController?.navigationBar.hidden = true
+    }
+    
+        
+        
+        // Do any additional setup after loading the view, typically from a nib.
+        
+   
         
 
-        calldatabase()
-//        logoimage.layer.shadowPath = UIBezierPath(rect:logoimage.bounds).CGPath
-      
-        
+//        func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView?
+//        {
+//            return self.logoimage
+//        }
+        //
+    func addLogo() {
+//          var img = UIImageView(image: UIImage(named: "Purz-Logo.png"))
+//        img.layer.borderWidth = 2
+//        img.layer.masksToBounds = false
+//        img.layer.cornerRadius = img.frame.size.height/2
+//        img.layer.borderColor = UIColor(red:230/255.0, green:175/255.0, blue:7/255.0, alpha:1.0).CGColor;
+//        img.clipsToBounds = true
+
+// img = UIImageView(frame: CGRectMake(0, 0, 100, 100))
+//       img.frame = CGRectMake( self.view.frame.size.width/2 - (50 + a/2) , 145 , 120 + a, 123 + a )
+//      a += 0.5
+//              img.layer.borderWidth = 2
+//        img.layer.cornerRadius = img.frame.size.height/2
+//        img.layer.borderColor = UIColor(red:230/255.0, green:175/255.0, blue:7/255.0, alpha:1.0).CGColor;
+//        if(a == 40.0){
+//            timer.invalidate()
+//            calldatabase()
+//
+//        }
+//        self.view.addSubview(img)
+       
     }
+    override func prefersStatusBarHidden() ->Bool {
+        return true
+    }
+
+
+      //        logoimage.layer.shadowPath = UIBezierPath(rect:logoimage.bounds).CGPath
+      
+    
+    
+    
        override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

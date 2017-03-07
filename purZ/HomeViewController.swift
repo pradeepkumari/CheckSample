@@ -1,4 +1,4 @@
-//
+//kCVImageBufferChromaLocation_Center//
 //  HomeViewController.swift
 //  Cippy
 //
@@ -8,20 +8,15 @@
 
 import UIKit
 import MapKit
-class HomeViewController: UIViewController, UINavigationControllerDelegate,CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate
+class HomeViewController: UIViewController, UINavigationControllerDelegate,CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate, UITabBarControllerDelegate
     
 {
-    
-        @IBOutlet weak var Transactionlbl: UILabel!
-    
-    @IBOutlet weak var payatshoplbl: UILabel!
+    @IBOutlet weak var amtsymbol: UILabel!
+    @IBOutlet weak var Transactionlbl: UILabel!
+   @IBOutlet weak var payatshoplbl: UILabel!
     @IBOutlet weak var sendoraskMoneyBtn: UIButton!
-//    @IBOutlet weak var transactionview: UIView!
     @IBOutlet weak var addbtn: UIButton!
-    
-//    @IBOutlet weak var sidemenubtn: UIBarButtonItem!
-    
-    @IBOutlet weak var Transactionbtn: UIButton!
+     @IBOutlet weak var Transactionbtn: UIButton!
             //    @IBOutlet weak var transactiondate1: UILabel!
 //    @IBOutlet weak var transactionbtn1: UIButton!
 //   
@@ -44,9 +39,39 @@ class HomeViewController: UIViewController, UINavigationControllerDelegate,CLLoc
     @IBOutlet weak var payatshopBtn: UIButton!
     
     @IBOutlet weak var tableView: UITableView!
-    
     @IBOutlet weak var rechargepaybilllbl: UILabel!
     @IBOutlet weak var Transactionheaderlbl: UILabel!
+    
+    @IBOutlet weak var batteryview: UIView!
+  
+    @IBOutlet weak var batterylab1: UILabel!
+//    @IBOutlet weak var sidemenubarbtn: UIBarButtonItem!
+    @IBOutlet weak var batterylab2: UILabel!
+    
+    @IBOutlet weak var batterylab3: UILabel!
+    
+    @IBOutlet weak var batterylab4: UILabel!
+    
+    @IBOutlet weak var batterylab5: UILabel!
+    
+    @IBOutlet weak var batterylab6: UILabel!
+    @IBOutlet weak var batterylab7: UILabel!
+    @IBOutlet weak var batterylab8: UILabel!
+    @IBOutlet weak var batterylab9: UILabel!
+    @IBOutlet weak var batterylab10: UILabel!
+    @IBOutlet weak var batterylab11: UILabel!
+    @IBOutlet weak var batterylab12: UILabel!
+    @IBOutlet weak var batterylab13: UILabel!
+    @IBOutlet weak var batterylab14: UILabel!
+    @IBOutlet weak var batterylab15: UILabel!
+    @IBOutlet weak var batterylab16: UILabel!
+    @IBOutlet weak var batterylab17: UILabel!
+    @IBOutlet weak var batterylab18: UILabel!
+    @IBOutlet weak var batterylab19: UILabel!
+    @IBOutlet weak var batterylab20: UILabel!
+    
+//  var sidemenu: UIBarButtonItem!
+    var sidemenu: UIBarButtonItem!
          var trans_date = [String]()
     var transactionamt = [String]()
     var beneficiaryname = [String]()
@@ -71,38 +96,72 @@ class HomeViewController: UIViewController, UINavigationControllerDelegate,CLLoc
     var dth_operatorId = [String]()
     var dth_operatorType = [String]()
     var dth_special = [Bool]()
-    var sidemenubtn: UIBarButtonItem!
+//    var sidemenubtn: UIBarButtonItem!
 //    @IBOutlet var btnRightBadge: MIBadgeButton!
     var fromweb = false
     var alertmsg = ""
+    var colorlabel:UIColor!
+    var selectedindex = 0
+    var selectedfromtable = false
+    
     override func viewDidLoad() {
-        super.viewDidLoad()
-//        tabBarController?.tabBar.items?[2].badgeValue = "2"
-        tabBarItem = UITabBarItem(title: "", image: UIImage(named: "logout"), tag: 2)
-//              UINavigationBar.appearance().barTintColor = UIColor(red: 250.0/255.0, green: 194.0/255.0, blue: 35.0/255.0, alpha: 1.0)
-//        let badgeButton : MIBadgeButton = MIBadgeButton(frame: CGRectMake(0, 0, 40, 40))
-//        badgeButton.setTitle("T1", forState: UIControlState.Normal)
-//        badgeButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-//        badgeButton.badgeString = "1";
-//        let barButton : UIBarButtonItem = UIBarButtonItem(customView: badgeButton)
-//        self.navigationItem.leftBarButtonItem = barButton//              sidemenubtn.addTarget(self, action: "action",
-//                forControlEvents: UIControlEvents.TouchUpInside)
-//        sidemenubtn.targetForAction(Selector("revealToggle:"), withSender: <#T##AnyObject?#>)
-//        sidemenubtn.actionsForTarget(self.revealViewController(), forControlEvent: UIControlEvents.TouchUpInside)
-   //                     self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-  sidemenubtn = UIBarButtonItem(image: UIImage(named: "menu_three_line.png"), style: .Plain, target: self, action: Selector("action"))
-         navigationItem.leftBarButtonItem = sidemenubtn
-        sidemenubtn.target = revealViewController()
-        sidemenubtn.action = "revealToggle:"
-        
-        
-        
-        
-//        scrollview.contentSize = CGSize(width: self.view.frame.size.width, height: 850)
-        
+      
+         initialfunc()
+        if(Appconstant.SideMenu==1)
+        {
+            payatshopBtn.sendActionsForControlEvents(.TouchUpInside);
+        }
+        if(Appconstant.SideMenu==2)
+        {
+            RechargeorPayBtn.sendActionsForControlEvents(.TouchUpInside);
+        }
+        if(Appconstant.SideMenu==3)
+        {
+            sendoraskMoneyBtn.sendActionsForControlEvents(.TouchUpInside);
+        }
+        if(Appconstant.SideMenu==4)
+        {
+            Transactionbtn.sendActionsForControlEvents(.TouchUpInside);
+        }
 
-        navigationController?.navigationBarHidden = false
-        tableView.scrollEnabled = true;
+        if(Appconstant.SideMenu==6)
+        {
+           performSegueWithIdentifier("home_contact", sender: self)
+        }
+          super.viewDidLoad()
+    tabBarController?.delegate = self
+        self.tabBarController?.tabBar.hidden = false
+        let badgeButton : UIButton = UIButton(frame: CGRectMake(0, 0, 40, 40))
+        badgeButton.setImage(UIImage(named: "Notifications-2"), forState: UIControlState.Normal)
+        badgeButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        badgeButton.targetForAction("buttonTouched", withSender: self)
+        badgeButton.addTarget(self, action: "buttonTouched", forControlEvents: UIControlEvents.TouchUpInside)
+                        //ROUNDED BUTTON Labelin
+        if(Appconstant.notificationcount > 0){
+                let label = UILabel(frame: CGRectMake(20, 0, 18, 18))
+                label.layer.masksToBounds = true
+                label.layer.cornerRadius = 8.0;
+                label.textAlignment = NSTextAlignment.Center
+                label.backgroundColor = UIColor.whiteColor()
+                label.textColor = UIColor.blackColor()
+                label.font = label.font.fontWithSize(12)
+                label.text = String(Appconstant.notificationcount)
+                badgeButton.addSubview(label)
+            }
+        
+                let barButton : UIBarButtonItem = UIBarButtonItem(customView: badgeButton)
+        //        barButton.setImage(UIImage(named: "Pay-at-store"), forState: UIControlState.Normal)
+        self.navigationItem.rightBarButtonItem = barButton
+        amtsymbol.text = "\u{20B9}"
+                     sidemenu = UIBarButtonItem(image: UIImage(named: "menu_three_line.png"), style: .Plain, target: self, action: Selector("action"))
+        navigationItem.leftBarButtonItem = sidemenu
+               sidemenu.target = self.revealViewController()
+                    sidemenu.action = #selector(SWRevealViewController.revealToggle(_:))
+        battery()
+        Transactionlbl.text = "We will pop out your recent transaction made on\nPurz soon as you start using your Wallet.\nSo what are you waiting for!"
+        
+             navigationController?.navigationBarHidden = false
+        tableView.scrollEnabled = false;
         payatshoplbl.text = "Pay @\nShop"
         rechargepaybilllbl.text = "Recharge/\nPayBills"
         sendasklbl.text = "Send/Ask\nMoney"
@@ -115,43 +174,34 @@ class HomeViewController: UIViewController, UINavigationControllerDelegate,CLLoc
         Transactionheaderlbl .layer.cornerRadius = 15
         Transactionheaderlbl.layer.masksToBounds = true
         viewallbtn.layer.cornerRadius = 6
-tableView.layer.cornerRadius = 9
-//        Transactionbtn.layer.cornerRadius = self.Transactionbtn.frame.size.height/2
-//        Transactionbacklbl.layer.cornerRadius = 9
-//        transactionlabl.layer.cornerRadius = 9
-        
-        
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        //        locManager.requestWhenInUseAuthorization()
-        //
-        //        if( CLLocationManager.authorizationStatus() == CLAuthorizationStatus.AuthorizedWhenInUse ||
-        //            CLLocationManager.authorizationStatus() == CLAuthorizationStatus.Authorized){
-        //
-        //                currentLocation = locManager.location!
-        //                print(currentLocation)
-        //                print(currentLocation.coordinate.latitude)
-        //                print(currentLocation.coordinate.longitude)
-        //        }
-              initialfunc()
-        getbalancefromServer(Appconstant.BASE_URL+Appconstant.URL_FETCH_MULTI_BALANCE_INFO+Appconstant.customerid)
+//tableView.layer.cornerRadius = 9
+           getbalancefromServer(Appconstant.BASE_URL+Appconstant.URL_FETCH_MULTI_BALANCE_INFO+Appconstant.customerid)
         print(Appconstant.BASE_URL+Appconstant.URL_FETCH_RECENT_TRANSACTIONS+Appconstant.customerid+"?pageNo=1&pageSize=3")
         getrecenttransaction(Appconstant.BASE_URL+Appconstant.URL_FETCH_RECENT_TRANSACTIONS+Appconstant.customerid+"?pageNo=1&pageSize=3")
         getplanlist(Appconstant.BASE_URL+Appconstant.URL_GETOPEARTORS)
-        
-        
+     }
+    func buttonTouched()
+    {
+        performSegueWithIdentifier("home_notification", sender: nil)
     }
-    override func viewWillAppear(animated: Bool) {
+
+    @IBAction func viewallBtn(sender: AnyObject) {
+        Transactionbtn.sendActionsForControlEvents(.TouchUpInside);
+    }
+          override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-//        print("No\(tabBarController?.selectedIndex)")
-//       print("hte value\(tabBarController?.tabBarItem.tag)")
-////         print("The Value of String is \(tabBarController?.selectedIndex)")
-//        if(self.tabBarController?.selectedIndex == 2)
-//       if( (tabBarController?.tabBarItem.tag)! == "2")
-//
-//             {
-//                  exit(0)
-//             }
+        if Appconstant.fromlogout{
+        Appconstant.fromlogout = false
+                let alert = UIAlertController(title: "Are you sure want to logout?", message: "", preferredStyle: UIAlertControllerStyle.Alert)
+        //             alert.setValue(attributedString, forKey: "attributedTitle")
+                alert.addAction(UIAlertAction(title: "YES", style: UIAlertActionStyle.Default, handler: { alertAction in
+                    exit (0)
+                }))
+        
+                                  alert.addAction(UIAlertAction(title: "CANCEL", style: UIAlertActionStyle.Default, handler: { alertAction in
+                        }))
+                self.presentViewController(alert, animated: true, completion: nil)
+        }
     }
        
     func initialfunc(){
@@ -191,9 +241,9 @@ tableView.layer.cornerRadius = 9
         //        defaults.setObject(Appconstant.notificationcount, forKey: "badgecount")
                let cippybalance = defaults.stringForKey("cippybalance")
         let badgevalue = defaults.stringForKey("badgecount")
-        if(cippybalance != nil){
-            balancelbl.text = cippybalance
-        }
+//        if(cippybalance != nil){
+//            balancelbl.text = cippybalance
+//        }
         print(badgevalue)
         if(badgevalue == nil){
             
@@ -288,11 +338,16 @@ tableView.layer.cornerRadius = 9
                             if(checkbalancedecimal[1].characters.count == 1){
                                 self.balancelbl.text = balance_two_decimal + "0"
                                 Appconstant.mainbalance = self.balancelbl.text!
+                                print("AMOUNT\(Appconstant.mainbalance)")
+                                self.batteryamt()
+
                             }
                             else{
                                 self.balancelbl.text = balance_two_decimal
                                 Appconstant.mainbalance = self.balancelbl.text!
-                                
+                                print("AMOUNT\(Appconstant.mainbalance)")
+                                self.batteryamt()
+
                                 let defaults = NSUserDefaults.standardUserDefaults()
                                 defaults.setObject(Appconstant.mainbalance, forKey: "cippybalance")
                             }
@@ -392,7 +447,7 @@ tableView.layer.cornerRadius = 9
 
                 self.tableView.reloadData()                }
                 
-//                self.transactiontable()
+                self .transactiontable()
         }
         
         task.resume()
@@ -413,6 +468,7 @@ tableView.layer.cornerRadius = 9
         print(beneficiaryname)
         if(transactionamt[indexPath.row] == "true"){
             Transactionlbl.hidden = false
+            Transactionlbl.text = "We will pop out your recent transaction made on/nPurz soon as you start using your Wallet./nSo what are you waiting for!"
                             //                self.activityIndicator.stopAnimating()
         }
             
@@ -446,7 +502,15 @@ tableView.layer.cornerRadius = 9
         print(self.beneficiaryname.count)
         return self.beneficiaryname.count
     }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+     
+        selectedindex = indexPath.row
+        selectedfromtable = true
+        self.performSegueWithIdentifier("from-home", sender: self)
+    
 
+    }
 
     func gettentransaction(url: String){
         
@@ -650,32 +714,722 @@ tableView.layer.cornerRadius = 9
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if(segue.identifier == "home_rechargeorbill") {
-            let nextview = segue.destinationViewController as! RechargeorPayBillViewController
-            nextview.pre_operatorCode = self.pre_operatorCode
-            nextview.pre_operatorName = self.pre_operatorName
-            nextview.pre_operatorId = self.pre_operatorId
-            nextview.pre_operatorType = self.pre_operatorType
-            nextview.pre_special = self.pre_special
-            nextview.post_operatorCode = self.post_operatorCode
-            nextview.post_operatorName = self.post_operatorName
-            nextview.post_operatorId = self.post_operatorId
-            nextview.post_operatorType = self.post_operatorType
-            nextview.post_special = self.post_special
-            nextview.dth_operatorCode = self.dth_operatorCode
-            nextview.dth_operatorName = self.dth_operatorName
-            nextview.dth_operatorId = self.dth_operatorId
-            nextview.dth_operatorType = self.dth_operatorType
-            nextview.dth_special = self.dth_special
+//        if(segue.identifier == "home_rechargeorbill") {
+//            let nextview = segue.destinationViewController as! RechargeorPayBillViewController
+////            nextview.pre_operatorCode = self.pre_operatorCode
+////            nextview.pre_operatorName = self.pre_operatorName
+////            nextview.pre_operatorId = self.pre_operatorId
+////            nextview.pre_operatorType = self.pre_operatorType
+////            nextview.pre_special = self.pre_special
+////            nextview.post_operatorCode = self.post_operatorCode
+////            nextview.post_operatorName = self.post_operatorName
+////            nextview.post_operatorId = self.post_operatorId
+////            nextview.post_operatorType = self.post_operatorType
+////            nextview.post_special = self.post_special
+////            nextview.dth_operatorCode = self.dth_operatorCode
+////            nextview.dth_operatorName = self.dth_operatorName
+////            nextview.dth_operatorId = self.dth_operatorId
+////            nextview.dth_operatorType = self.dth_operatorType
+////            nextview.dth_special = self.dth_special
+//        }
+//        
+        if(segue.identifier == "from-home") {
+            let nextview = segue.destinationViewController as! TransactionsViewController
+            nextview.fromhome = true
+            nextview.selectedindex = selectedindex
+            //                nextview.txref = tx_ref
+            //                nextview.ben_name = benname
+            //                nextview.time = time
+            //                nextview.mainamount = splitamt
+            //            }
         }
     }
     
+    
+    
+    func battery()
+    {
+        batteryview.layer.cornerRadius = 7
+        batteryview.layer.borderColor = UIColor.lightGrayColor().CGColor
+        batteryview.layer.borderWidth = 3
+        batterylab1.layer.borderColor = UIColor.lightGrayColor().CGColor
+        batterylab1.layer.borderWidth = 1
+        batterylab2.layer.borderColor = UIColor.lightGrayColor().CGColor
+        batterylab2.layer.borderWidth = 1
+        batterylab3.layer.borderColor = UIColor.lightGrayColor().CGColor
+        batterylab3.layer.borderWidth = 1
+        batterylab4.layer.borderColor = UIColor.lightGrayColor().CGColor
+        batterylab4.layer.borderWidth = 1
+        batterylab5.layer.borderColor = UIColor.lightGrayColor().CGColor
+        batterylab5.layer.borderWidth = 1
+        batterylab6.layer.borderColor = UIColor.lightGrayColor().CGColor
+        batterylab6.layer.borderWidth = 1
+        batterylab7.layer.borderColor = UIColor.lightGrayColor().CGColor
+        batterylab7.layer.borderWidth = 1
+        batterylab8.layer.borderColor = UIColor.lightGrayColor().CGColor
+        batterylab8
+            .layer.borderWidth = 1
+        batterylab9.layer.borderColor = UIColor.lightGrayColor().CGColor
+        batterylab9.layer.borderWidth = 1
+        batterylab10.layer.borderColor = UIColor.lightGrayColor().CGColor
+        batterylab10.layer.borderWidth = 1
+        batterylab11.layer.borderColor = UIColor.lightGrayColor().CGColor
+        batterylab11.layer.borderWidth = 1
+        batterylab12.layer.borderColor = UIColor.lightGrayColor().CGColor
+        batterylab12.layer.borderWidth = 1
+        batterylab13.layer.borderColor = UIColor.lightGrayColor().CGColor
+        batterylab13.layer.borderWidth = 1
+        batterylab14.layer.borderColor = UIColor.lightGrayColor().CGColor
+        batterylab14.layer.borderWidth = 1
+        batterylab15.layer.borderColor = UIColor.lightGrayColor().CGColor
+        batterylab15.layer.borderWidth = 1
+        batterylab16.layer.borderColor = UIColor.lightGrayColor().CGColor
+        batterylab16.layer.borderWidth = 1
+        batterylab17.layer.borderColor = UIColor.lightGrayColor().CGColor
+        batterylab17.layer.borderWidth = 1
+        batterylab18.layer.borderColor = UIColor.lightGrayColor().CGColor
+        batterylab18.layer.borderWidth = 1
+        batterylab19.layer.borderColor = UIColor.lightGrayColor().CGColor
+        batterylab19.layer.borderWidth = 1
+        batterylab20.layer.borderColor = UIColor.lightGrayColor().CGColor
+        batterylab20.layer.borderWidth = 1
+        
+    batterylab1.layer.cornerRadius = 3
+    batterylab2.layer.cornerRadius = 3
+    batterylab3.layer.cornerRadius = 3
+    batterylab4.layer.cornerRadius = 3
+    batterylab5.layer.cornerRadius = 3
+    batterylab6.layer.cornerRadius = 3
+    batterylab7.layer.cornerRadius = 3
+    batterylab8.layer.cornerRadius = 3
+    batterylab9.layer.cornerRadius = 3
+    batterylab10.layer.cornerRadius = 3
+    batterylab11.layer.cornerRadius = 3
+    batterylab12.layer.cornerRadius = 3
+    batterylab13.layer.cornerRadius = 3
+    batterylab14.layer.cornerRadius = 3
+    batterylab15.layer.cornerRadius = 3
+    batterylab16.layer.cornerRadius = 3
+    batterylab17.layer.cornerRadius = 3
+    batterylab18.layer.cornerRadius = 3
+    batterylab19.layer.cornerRadius = 3
+    batterylab20.layer.cornerRadius = 3
+}
+       func batteryamt()
+    {
+//  (Appconstant.mainbalance) = "10000"
+        
+        if(Double(Appconstant.mainbalance) == 0)
+        {
+            colorlabel = UIColor.redColor()
+            batteryfivecolor()
+            batteryeightcolor()
+            batteryfifteencolor()
+            batterytwentycolor()
+        }
+
+else if(Double(Appconstant.mainbalance) <= 5000  )
+        {
+ colorlabel = UIColor.redColor()
+     batteryfivecolor()
+    
+    }
+      else if(Double(Appconstant.mainbalance) <= 8000  )
+        {
+           colorlabel = UIColor.yellowColor()
+            batteryfivecolor()
+            batteryeightcolor()
+            
+        }
+ else if (Double(Appconstant.mainbalance) <= 15000  )
+{
+    colorlabel =  UIColor(red: 120.0/255.0, green: 210.0/255.0, blue: 110.0/255.0, alpha: 1.0)
+
+    batteryfivecolor()
+    batteryeightcolor()
+    batteryfifteencolor()
+    
+        }
+else if(Double(Appconstant.mainbalance) <= 20000  )
+{
+    colorlabel = UIColor.greenColor()
+    batteryfivecolor()
+    batteryeightcolor()
+    batteryfifteencolor()
+    batterytwentycolor()
+            }
+
+    }
+    func batteryfivecolor()
+    {
+        
+        print(Appconstant.mainbalance)
+        
+        if(Double(Appconstant.mainbalance) <= 1000.0)
+        {
+            batterylab1.layer.backgroundColor = colorlabel.CGColor
+            batterylab1.layer.borderColor = UIColor.clearColor().CGColor
+            
+        }
+        else if(Double(Appconstant.mainbalance) <= 2000.0)
+        {batterylab1.layer.backgroundColor = colorlabel.CGColor
+            batterylab2.layer.backgroundColor = colorlabel.CGColor
+            batterylab1.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab2.layer.borderColor = UIColor.clearColor().CGColor
+
+
+        }
+        else if(Double(Appconstant.mainbalance) <= 3000.0)
+        {batterylab1.layer.backgroundColor = colorlabel.CGColor
+            batterylab2.layer.backgroundColor = colorlabel.CGColor
+            batterylab3.layer.backgroundColor = colorlabel.CGColor
+            batterylab1.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab2.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab3.layer.borderColor = UIColor.clearColor().CGColor
+
+        }
+        else if(Double(Appconstant.mainbalance) <= 4000.0)
+        {batterylab1.layer.backgroundColor = colorlabel.CGColor
+            batterylab2.layer.backgroundColor = colorlabel.CGColor
+            batterylab3.layer.backgroundColor = colorlabel.CGColor
+            batterylab4.layer.backgroundColor = colorlabel.CGColor
+            batterylab1.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab2.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab3.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab4.layer.borderColor = UIColor.clearColor().CGColor
+
+        }
+        else if(Double(Appconstant.mainbalance) <= 5000.0)
+        {batterylab1.layer.backgroundColor = colorlabel.CGColor
+            batterylab2.layer.backgroundColor = colorlabel.CGColor
+            batterylab3.layer.backgroundColor = colorlabel.CGColor
+            batterylab4.layer.backgroundColor = colorlabel.CGColor
+            batterylab5.layer.backgroundColor = colorlabel.CGColor
+            batterylab1.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab2.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab3.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab4.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab5.layer.borderColor = UIColor.clearColor().CGColor
+
+        }
+        
+
+    }
+    func batteryeightcolor()
+    {
+        if(Double(Appconstant.mainbalance) <= 6000.0)
+        {batterylab1.layer.backgroundColor = colorlabel.CGColor
+            batterylab2.layer.backgroundColor = colorlabel.CGColor
+            batterylab3.layer.backgroundColor = colorlabel.CGColor
+            batterylab4.layer.backgroundColor = colorlabel.CGColor
+         batterylab5.layer.backgroundColor = colorlabel.CGColor
+            batterylab6.layer.backgroundColor = colorlabel.CGColor
+            batterylab1.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab2.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab3.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab4.layer.borderColor = UIColor.clearColor().CGColor
+             batterylab5.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab6.layer.borderColor = UIColor.clearColor().CGColor
+
+        }
+        else if(Double(Appconstant.mainbalance) <= 7000.0)
+        {
+            batterylab1.layer.backgroundColor = colorlabel.CGColor
+            batterylab2.layer.backgroundColor = colorlabel.CGColor
+            batterylab3.layer.backgroundColor = colorlabel.CGColor
+            batterylab4.layer.backgroundColor = colorlabel.CGColor
+            batterylab5.layer.backgroundColor = colorlabel.CGColor
+            batterylab6.layer.backgroundColor = colorlabel.CGColor
+            batterylab7.layer.backgroundColor = colorlabel.CGColor
+            batterylab1.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab2.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab3.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab4.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab5.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab6.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab7.layer.borderColor = UIColor.clearColor().CGColor
+
+        }
+        else if(Double(Appconstant.mainbalance) <= 8000.0)
+        {
+            batterylab1.layer.backgroundColor = colorlabel.CGColor
+            batterylab2.layer.backgroundColor = colorlabel.CGColor
+            batterylab3.layer.backgroundColor = colorlabel.CGColor
+            batterylab4.layer.backgroundColor = colorlabel.CGColor
+            batterylab5.layer.backgroundColor = colorlabel.CGColor
+            batterylab6.layer.backgroundColor = colorlabel.CGColor
+            batterylab7.layer.backgroundColor = colorlabel.CGColor
+            batterylab8.layer.backgroundColor = colorlabel.CGColor
+            batterylab1.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab2.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab3.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab4.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab5.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab6.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab7.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab8.layer.borderColor = UIColor.clearColor().CGColor
+
+        }
+   }
+    func batteryfifteencolor()
+    {
+        if(Double(Appconstant.mainbalance) <= 9000.0)
+        {
+            batterylab1.layer.backgroundColor = colorlabel.CGColor
+            batterylab2.layer.backgroundColor = colorlabel.CGColor
+            batterylab3.layer.backgroundColor = colorlabel.CGColor
+            batterylab4.layer.backgroundColor = colorlabel.CGColor
+            batterylab5.layer.backgroundColor = colorlabel.CGColor
+            batterylab6.layer.backgroundColor = colorlabel.CGColor
+            batterylab7.layer.backgroundColor = colorlabel.CGColor
+            batterylab8.layer.backgroundColor = colorlabel.CGColor
+            batterylab9.layer.backgroundColor = colorlabel.CGColor
+            batterylab1.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab2.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab3.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab4.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab5.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab6.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab7.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab8.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab9.layer.borderColor = UIColor.clearColor().CGColor
+
+        }
+        else if(Double(Appconstant.mainbalance) <= 10000.0)
+        {
+            batterylab1.layer.backgroundColor = colorlabel.CGColor
+            batterylab2.layer.backgroundColor = colorlabel.CGColor
+            batterylab3.layer.backgroundColor = colorlabel.CGColor
+            batterylab4.layer.backgroundColor = colorlabel.CGColor
+            batterylab5.layer.backgroundColor = colorlabel.CGColor
+            batterylab6.layer.backgroundColor = colorlabel.CGColor
+            batterylab7.layer.backgroundColor = colorlabel.CGColor
+            batterylab8.layer.backgroundColor = colorlabel.CGColor
+            batterylab9.layer.backgroundColor = colorlabel.CGColor
+            batterylab10.layer.backgroundColor = colorlabel.CGColor
+            batterylab1.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab2.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab3.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab4.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab5.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab6.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab7.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab8.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab9.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab10.layer.borderColor = UIColor.clearColor().CGColor
+
+
+        }
+        else if(Double(Appconstant.mainbalance) <= 11000.0)
+        {
+            batterylab1.layer.backgroundColor = colorlabel.CGColor
+            batterylab2.layer.backgroundColor = colorlabel.CGColor
+            batterylab3.layer.backgroundColor = colorlabel.CGColor
+            batterylab4.layer.backgroundColor = colorlabel.CGColor
+            batterylab5.layer.backgroundColor = colorlabel.CGColor
+            batterylab6.layer.backgroundColor = colorlabel.CGColor
+            batterylab7.layer.backgroundColor = colorlabel.CGColor
+            batterylab8.layer.backgroundColor = colorlabel.CGColor
+            batterylab9.layer.backgroundColor = colorlabel.CGColor
+            batterylab10.layer.backgroundColor = colorlabel.CGColor
+            batterylab11.layer.backgroundColor = colorlabel.CGColor
+            batterylab1.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab2.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab3.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab4.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab5.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab6.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab7.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab8.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab9.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab10.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab11.layer.borderColor = UIColor.clearColor().CGColor
+
+
+        }
+        else if(Double(Appconstant.mainbalance) <= 12000.0)
+        {
+            batterylab1.layer.backgroundColor = colorlabel.CGColor
+            batterylab2.layer.backgroundColor = colorlabel.CGColor
+            batterylab3.layer.backgroundColor = colorlabel.CGColor
+            batterylab4.layer.backgroundColor = colorlabel.CGColor
+            batterylab5.layer.backgroundColor = colorlabel.CGColor
+            batterylab6.layer.backgroundColor = colorlabel.CGColor
+            batterylab7.layer.backgroundColor = colorlabel.CGColor
+            batterylab8.layer.backgroundColor = colorlabel.CGColor
+            batterylab9.layer.backgroundColor = colorlabel.CGColor
+            batterylab10.layer.backgroundColor = colorlabel.CGColor
+            batterylab11.layer.backgroundColor = colorlabel.CGColor
+            batterylab12.layer.backgroundColor = colorlabel.CGColor
+            batterylab1.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab2.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab3.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab4.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab5.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab6.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab7.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab8.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab9.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab10.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab11.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab12.layer.borderColor = UIColor.clearColor().CGColor
+
+
+        }
+        else if(Double(Appconstant.mainbalance) <= 13000.0)
+        {
+            batterylab1.layer.backgroundColor = colorlabel.CGColor
+            batterylab2.layer.backgroundColor = colorlabel.CGColor
+            batterylab3.layer.backgroundColor = colorlabel.CGColor
+            batterylab4.layer.backgroundColor = colorlabel.CGColor
+            batterylab5.layer.backgroundColor = colorlabel.CGColor
+            batterylab6.layer.backgroundColor = colorlabel.CGColor
+            batterylab7.layer.backgroundColor = colorlabel.CGColor
+            batterylab8.layer.backgroundColor = colorlabel.CGColor
+            batterylab9.layer.backgroundColor = colorlabel.CGColor
+            batterylab10.layer.backgroundColor = colorlabel.CGColor
+            batterylab11.layer.backgroundColor = colorlabel.CGColor
+            batterylab12.layer.backgroundColor = colorlabel.CGColor
+            batterylab13.layer.backgroundColor = colorlabel.CGColor
+            batterylab1.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab2.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab3.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab4.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab5.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab6.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab7.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab8.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab9.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab10.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab11.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab12.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab13.layer.borderColor = UIColor.clearColor().CGColor
+
+
+        }
+        else if(Double(Appconstant.mainbalance) <= 14000.0)
+        {
+            batterylab1.layer.backgroundColor = colorlabel.CGColor
+            batterylab2.layer.backgroundColor = colorlabel.CGColor
+            batterylab3.layer.backgroundColor = colorlabel.CGColor
+            batterylab4.layer.backgroundColor = colorlabel.CGColor
+            batterylab5.layer.backgroundColor = colorlabel.CGColor
+            batterylab6.layer.backgroundColor = colorlabel.CGColor
+            batterylab7.layer.backgroundColor = colorlabel.CGColor
+            batterylab8.layer.backgroundColor = colorlabel.CGColor
+            batterylab9.layer.backgroundColor = colorlabel.CGColor
+            batterylab10.layer.backgroundColor = colorlabel.CGColor
+            batterylab11.layer.backgroundColor = colorlabel.CGColor
+            batterylab12.layer.backgroundColor = colorlabel.CGColor
+            batterylab13.layer.backgroundColor = colorlabel.CGColor
+            batterylab14.layer.backgroundColor = colorlabel.CGColor
+            batterylab1.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab2.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab3.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab4.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab5.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab6.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab7.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab8.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab9.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab10.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab11.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab12.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab13.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab14.layer.borderColor = UIColor.clearColor().CGColor
+
+            
+
+        }
+        else if(Double(Appconstant.mainbalance) <= 15000.0)
+        {
+            batterylab1.layer.backgroundColor = colorlabel.CGColor
+            batterylab2.layer.backgroundColor = colorlabel.CGColor
+            batterylab3.layer.backgroundColor = colorlabel.CGColor
+            batterylab4.layer.backgroundColor = colorlabel.CGColor
+            batterylab5.layer.backgroundColor = colorlabel.CGColor
+            batterylab6.layer.backgroundColor = colorlabel.CGColor
+            batterylab7.layer.backgroundColor = colorlabel.CGColor
+            batterylab8.layer.backgroundColor = colorlabel.CGColor
+            batterylab9.layer.backgroundColor = colorlabel.CGColor
+            batterylab10.layer.backgroundColor = colorlabel.CGColor
+            batterylab11.layer.backgroundColor = colorlabel.CGColor
+            batterylab12.layer.backgroundColor = colorlabel.CGColor
+            batterylab13.layer.backgroundColor = colorlabel.CGColor
+            batterylab14.layer.backgroundColor = colorlabel.CGColor
+            batterylab15.layer.backgroundColor = colorlabel.CGColor
+            batterylab1.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab2.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab3.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab4.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab5.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab6.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab7.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab8.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab9.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab10.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab11.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab12.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab13.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab14.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab15.layer.borderColor = UIColor.clearColor().CGColor
+
+        }
+    }
+ 
+    func batterytwentycolor()
+    {
+         if((Double(Appconstant.mainbalance) <= 20000.0) || (Double(Appconstant.mainbalance) == 0))
+        {
+            batterylab1.layer.backgroundColor = colorlabel.CGColor
+            batterylab2.layer.backgroundColor = colorlabel.CGColor
+            batterylab3.layer.backgroundColor = colorlabel.CGColor
+            batterylab4.layer.backgroundColor = colorlabel.CGColor
+            batterylab5.layer.backgroundColor = colorlabel.CGColor
+            batterylab6.layer.backgroundColor = colorlabel.CGColor
+            batterylab7.layer.backgroundColor = colorlabel.CGColor
+            batterylab8.layer.backgroundColor = colorlabel.CGColor
+            batterylab9.layer.backgroundColor = colorlabel.CGColor
+            batterylab10.layer.backgroundColor = colorlabel.CGColor
+            batterylab11.layer.backgroundColor = colorlabel.CGColor
+            batterylab12.layer.backgroundColor = colorlabel.CGColor
+            batterylab13.layer.backgroundColor = colorlabel.CGColor
+            batterylab14.layer.backgroundColor = colorlabel.CGColor
+            batterylab15.layer.backgroundColor = colorlabel.CGColor
+            batterylab16.layer.backgroundColor = colorlabel.CGColor
+            batterylab17.layer.backgroundColor = colorlabel.CGColor
+            batterylab18.layer.backgroundColor = colorlabel.CGColor
+            batterylab19.layer.backgroundColor = colorlabel.CGColor
+            batterylab20.layer.backgroundColor = colorlabel.CGColor
+            batterylab1.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab2.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab3.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab4.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab5.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab6.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab7.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab8.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab9.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab10.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab11.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab12.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab13.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab14.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab15.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab16.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab17.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab18.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab19.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab20.layer.borderColor = UIColor.clearColor().CGColor
+            
+        }
+       
+        else if(Double(Appconstant.mainbalance) <= 16000.0)
+        {
+            batterylab1.layer.backgroundColor = colorlabel.CGColor
+            batterylab2.layer.backgroundColor = colorlabel.CGColor
+            batterylab3.layer.backgroundColor = colorlabel.CGColor
+            batterylab4.layer.backgroundColor = colorlabel.CGColor
+            batterylab5.layer.backgroundColor = colorlabel.CGColor
+            batterylab6.layer.backgroundColor = colorlabel.CGColor
+            batterylab7.layer.backgroundColor = colorlabel.CGColor
+            batterylab8.layer.backgroundColor = colorlabel.CGColor
+            batterylab9.layer.backgroundColor = colorlabel.CGColor
+            batterylab10.layer.backgroundColor = colorlabel.CGColor
+            batterylab11.layer.backgroundColor = colorlabel.CGColor
+            batterylab12.layer.backgroundColor = colorlabel.CGColor
+            batterylab13.layer.backgroundColor = colorlabel.CGColor
+            batterylab14.layer.backgroundColor = colorlabel.CGColor
+            batterylab15.layer.backgroundColor = colorlabel.CGColor
+            batterylab16.layer.backgroundColor = colorlabel.CGColor
+            batterylab1.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab2.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab3.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab4.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab5.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab6.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab7.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab8.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab9.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab10.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab11.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab12.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab13.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab14.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab15.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab16.layer.borderColor = UIColor.clearColor().CGColor
+
+
+        }
+        else if(Double(Appconstant.mainbalance) <= 17000.0)
+        { batterylab1.layer.backgroundColor = colorlabel.CGColor
+            batterylab2.layer.backgroundColor = colorlabel.CGColor
+            batterylab3.layer.backgroundColor = colorlabel.CGColor
+            batterylab4.layer.backgroundColor = colorlabel.CGColor
+            batterylab5.layer.backgroundColor = colorlabel.CGColor
+            batterylab6.layer.backgroundColor = colorlabel.CGColor
+            batterylab7.layer.backgroundColor = colorlabel.CGColor
+            batterylab8.layer.backgroundColor = colorlabel.CGColor
+            batterylab9.layer.backgroundColor = colorlabel.CGColor
+            batterylab10.layer.backgroundColor = colorlabel.CGColor
+            batterylab11.layer.backgroundColor = colorlabel.CGColor
+            batterylab12.layer.backgroundColor = colorlabel.CGColor
+            batterylab13.layer.backgroundColor = colorlabel.CGColor
+            batterylab14.layer.backgroundColor = colorlabel.CGColor
+           batterylab15.layer.backgroundColor = colorlabel.CGColor
+            batterylab16.layer.backgroundColor = colorlabel.CGColor
+            batterylab17.layer.backgroundColor = colorlabel.CGColor
+            batterylab1.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab2.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab3.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab4.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab5.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab6.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab7.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab8.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab9.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab10.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab11.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab12.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab13.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab14.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab15.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab16.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab17.layer.borderColor = UIColor.clearColor().CGColor
+
+        }
+        else if(Double(Appconstant.mainbalance) <= 18000.0)
+        {batterylab1.layer.backgroundColor = colorlabel.CGColor
+            batterylab2.layer.backgroundColor = colorlabel.CGColor
+            batterylab3.layer.backgroundColor = colorlabel.CGColor
+            batterylab4.layer.backgroundColor = colorlabel.CGColor
+            batterylab5.layer.backgroundColor = colorlabel.CGColor
+            batterylab6.layer.backgroundColor = colorlabel.CGColor
+            batterylab7.layer.backgroundColor = colorlabel.CGColor
+            batterylab8.layer.backgroundColor = colorlabel.CGColor
+            batterylab9.layer.backgroundColor = colorlabel.CGColor
+            batterylab10.layer.backgroundColor = colorlabel.CGColor
+            batterylab11.layer.backgroundColor = colorlabel.CGColor
+            batterylab12.layer.backgroundColor = colorlabel.CGColor
+            batterylab13.layer.backgroundColor = colorlabel.CGColor
+            batterylab14.layer.backgroundColor = colorlabel.CGColor
+            batterylab15.layer.backgroundColor = colorlabel.CGColor
+            batterylab16.layer.backgroundColor = colorlabel.CGColor
+            batterylab17.layer.backgroundColor = colorlabel.CGColor
+            batterylab18.layer.backgroundColor = colorlabel.CGColor
+            batterylab1.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab2.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab3.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab4.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab5.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab6.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab7.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab8.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab9.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab10.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab11.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab12.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab13.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab14.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab15.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab16.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab17.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab18.layer.borderColor = UIColor.clearColor().CGColor
+
+
+        }
+        else if(Double(Appconstant.mainbalance) <= 19000.0)
+        {batterylab1.layer.backgroundColor = colorlabel.CGColor
+            batterylab2.layer.backgroundColor = colorlabel.CGColor
+            batterylab3.layer.backgroundColor = colorlabel.CGColor
+            batterylab4.layer.backgroundColor = colorlabel.CGColor
+            batterylab5.layer.backgroundColor = colorlabel.CGColor
+            batterylab6.layer.backgroundColor = colorlabel.CGColor
+            batterylab7.layer.backgroundColor = colorlabel.CGColor
+            batterylab8.layer.backgroundColor = colorlabel.CGColor
+            batterylab9.layer.backgroundColor = colorlabel.CGColor
+            batterylab10.layer.backgroundColor = colorlabel.CGColor
+            batterylab11.layer.backgroundColor = colorlabel.CGColor
+            batterylab12.layer.backgroundColor = colorlabel.CGColor
+            batterylab13.layer.backgroundColor = colorlabel.CGColor
+            batterylab14.layer.backgroundColor = colorlabel.CGColor
+            batterylab15.layer.backgroundColor = colorlabel.CGColor
+            batterylab16.layer.backgroundColor = colorlabel.CGColor
+            batterylab17.layer.backgroundColor = colorlabel.CGColor
+            batterylab18.layer.backgroundColor = colorlabel.CGColor
+            batterylab19.layer.backgroundColor = colorlabel.CGColor
+            batterylab1.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab2.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab3.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab4.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab5.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab6.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab7.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab8.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab9.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab10.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab11.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab12.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab13.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab14.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab15.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab16.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab17.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab18.layer.borderColor = UIColor.clearColor().CGColor
+            batterylab19.layer.borderColor = UIColor.clearColor().CGColor
+
+        }
+     
+        
+        
+    }
+   
+    func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
+        
+        print(viewController.parentViewController)
+        print(viewController)
+        
+        
+        let tabBarIndex = tabBarController.selectedIndex
+        
+        if tabBarIndex == 0 {
+            print("Selected item")
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let controller = storyboard.instantiateViewControllerWithIdentifier("RevealView")
+            
+            
+            //            let HomeVc: HomeViewController = HomeViewController()
+            //
+            self.navigationController?.pushViewController(controller, animated: true)
+            //            self.navigationController?.pushViewController(HomeVc, animated: true)
+        }
+     else if tabBarIndex == 1 {
+            print("Selected item")
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let controller = storyboard.instantiateViewControllerWithIdentifier("MyAccount")
+            
+            
+            //            let HomeVc: HomeViewController = HomeViewController()
+            //
+            self.navigationController?.pushViewController(controller, animated: true)
+            //            self.navigationController?.pushViewController(HomeVc, animated: true)
+        }
+        
+        
+        print("Selected view controller")
+        
+    }
+
 }
 
-    
-    
-       
-    
+
+
+
+
+
+
 
 
 
